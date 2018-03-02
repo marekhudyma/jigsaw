@@ -1,4 +1,4 @@
 module moduleMh {
-
+    requires moduleLibraryMh;
 
 }
