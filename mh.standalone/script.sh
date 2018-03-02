@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+rm -rf standalone
+
+mvn clean install
+
+mkdir target/jars
+mv target/mh.standalone-1.0-SNAPSHOT.jar target/jars/
+
+$JAVA_HOME/bin/jlink \
+--module-path $JAVA_HOME/jmods/:target/jars \
+--add-modules moduleMh \
+--launcher launcherMh=moduleMh/mh.App \
+--output standalone \
+--strip-debug \
+--compress 2 \
+--no-header-files \
+--no-man-pages
+
+du -sh standalone
