@@ -15,4 +15,43 @@
         <module>mh.library</module>
     </modules>
 
+    <!--https://repository.apache.org/content/repositories/snapshots/org/apache/maven/plugins/maven-jlink-plugin/3.0.0-alpha-2-SNAPSHOT/-->
+    <!--https://repository.apache.org/content/groups/snapshots/org/apache/maven/plugins/maven-jlink-plugin/3.0.0-alpha-2-SNAPSHOT/-->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <name>Apache Snapshot Repository</name>
+            <url>https://repository.apache.org/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jlink-plugin</artifactId>
+                <version>3.0.0-alpha-2-SNAPSHOT</version>
+                <!--<version>3.0.0-SNAPSHOT</version>-->
+                <configuration>
+                    <addModules>
+                        <addModule>moduleMh</addModule>
+                    </addModules>
+                    <!--<outputDirectoryImage>/Users/marekhudyma/private/jigsaw/jlink_image</outputDirectoryImage>-->
+                    <outputDirectory>/Users/marekhudyma/private/jigsaw/jlink_dir</outputDirectory>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManPages>true</noManPages>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

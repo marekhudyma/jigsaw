@@ -17,15 +17,37 @@
         <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
     </properties>
 
+    <!--Error: module-info.class not found for error.prone.annotations module - guava 24-->
+    <!--Error: module-info.class not found for animal.sniffer.annotations module - guava 25-->
+    <!--Error: module-info.class not found for error.prone.annotations module - animal-sniffer-annotations - 1.16-->
+    <!--Error: module-info.class not found for error.prone.annotations module - error_prone_annotations - 2.3.1-->
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>animal-sniffer-annotations</artifactId>
+                <version>1.16</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.3.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
-        <!--<dependency>-->
-            <!--<groupId>com.google.guava</groupId>-->
-            <!--<artifactId>guava</artifactId>-->
-            <!--<version>24.0-jre</version>-->
-            <!--&lt;!&ndash; on purpose old Guava &ndash;&gt;-->
-            <!--&lt;!&ndash;<version>20.0</version>&ndash;&gt;-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.0-jre</version>
+            <!-- on purpose old Guava -->
+            <!--<version>20.0</version>-->
+        </dependency>
+
+        <!--================================ TEST SCOPE  ======================================-->
 
         <dependency>
             <groupId>org.assertj</groupId>

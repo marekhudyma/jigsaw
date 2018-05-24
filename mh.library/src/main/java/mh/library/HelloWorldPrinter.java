@@ -1,5 +1,9 @@
 package mh.library;
 
+import com.google.common.util.concurrent.Uninterruptibles;
+
+import java.util.concurrent.TimeUnit;
+
 public class HelloWorldPrinter {
 
     private int counter = 0;
@@ -7,8 +11,8 @@ public class HelloWorldPrinter {
     public void printForever() {
         while(true) {
             System.out.println("Hello World " + ++counter);
-            //Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
-            sleep1second();
+            Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+            //sleep1second();
         }
     }
 
