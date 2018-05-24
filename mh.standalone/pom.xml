@@ -25,6 +25,8 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!--================================ TEST SCOPE  ======================================-->
+
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>

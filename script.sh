@@ -4,7 +4,7 @@ rm -rf standalone
 rm -rf jars
 mkdir jars
 
-mvn clean install
+mvn clean install -U
 
 cp mh.standalone/target/mh.standalone-1.0-SNAPSHOT.jar jars
 cp mh.library/target/mh.library-1.0-SNAPSHOT.jar jars
@@ -19,4 +19,20 @@ $JAVA_HOME/bin/jlink \
 --no-header-files \
 --no-man-pages
 
+
+#$JAVA_HOME/bin/jlink \
+#--module-path $JAVA_HOME/jmods/:jars \
+#--add-modules moduleMh,java.base,java.logging,jdk.unsupported \
+#--launcher launcherMh=moduleMh/mh.standalone.App \
+#--output standalone \
+#--strip-debug \
+#--compress 2 \
+#--no-header-files \
+#--no-man-pages
+
+
+
+
 du -sh standalone
+
+
