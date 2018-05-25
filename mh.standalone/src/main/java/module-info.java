@@ -1,4 +1,7 @@
 module moduleMh {
-    requires moduleLibraryMh;
+
+    requires jdk.net;
+    requires mh.library.without;
+    // requires moduleLibraryMh;
 
 }

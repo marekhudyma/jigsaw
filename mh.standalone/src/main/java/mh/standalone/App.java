@@ -1,6 +1,6 @@
 package mh.standalone;
 
-import mh.library.HelloWorldPrinter;
+import mh.library.without.HelloWorldPrinter;
 
 public class App {
 

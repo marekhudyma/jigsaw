@@ -13,6 +13,7 @@
     <modules>
         <module>mh.standalone</module>
         <module>mh.library</module>
+        <module>mh.library.without</module>
     </modules>
 
     <!--https://repository.apache.org/content/repositories/snapshots/org/apache/maven/plugins/maven-jlink-plugin/3.0.0-alpha-2-SNAPSHOT/-->
