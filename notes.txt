@@ -1,3 +1,35 @@
+jdeps --generate-module-info generated-mods commons-codec-1.10.jar
+writing to generated-mods/commons.codec/module-info.java
+jdeps --generate-module-info generated-mods commons-collections4-4.1.jar
+writing to generated-mods/commons.collections4/module-info.java
 
-jdeps guava-20.0.jar
 
+javac --patch-module commons.codec=commons-codec-1.10.jar module-info.java
+jar uf commons-codec-1.10.jar module-info.class
+
+javac --patch-module commons.collections4=commons-collections4-4.1.jar module-info.java
+jar uf commons-collections4-4.1.jar module-info.class
+
+module commons.logging {
+    exports org.apache.commons.logging;
+}
+
+javac --patch-module commons.logging=commons-logging-1.2.jar module-info.java
+jar uf commons-logging-1.2.jar module-info.class
+
+jdeps --module-path /Users/marekhudyma/private/jigsaw/jars/:jars --add-modules commons.codec,commons.collections4,commons.logging --generate-module-info generated-mods poi-3.17.jar
+javac --module-path /Users/marekhudyma/private/jigsaw/jars/:jars --add-modules commons.codec,commons.collections4,commons.logging --patch-module poi=poi-3.17.jar module-info.java
+jar uf poi-3.17.jar module-info.class
+
+jdeps --module-path /Users/marekhudyma/private/jigsaw/jars/:jars --add-modules commons.codec,commons.collections4,commons.logging,poi --generate-module-info generated-mods poi-scratchpad-3.17.jar
+javac --module-path /Users/marekhudyma/private/jigsaw/jars/:jars --add-modules commons.codec,commons.collections4,commons.logging,poi --patch-module poi.scratchpad=poi-scratchpad-3.17.jar module-info.java
+jar uf poi-scratchpad-3.17.jar module-info.class
+
+
+
+
+jar -xvf jar1.jar tmp
+jar -xvf jar2.jar tmp
+
+cd tmp
+jar -cvf jar3.jar .

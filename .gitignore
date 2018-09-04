@@ -1,3 +1,9 @@
+mh.standaloneA/jars
+mh.standaloneA/standalone
+
+mh.standaloneB/jars
+mh.standaloneB/standalone
+
 *.log
 
 # Created by https://www.gitignore.io

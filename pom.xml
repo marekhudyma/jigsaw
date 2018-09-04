@@ -4,55 +4,57 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mh</groupId>
-    <artifactId>mh.parent</artifactId>
+    <artifactId>mh.jigsaw</artifactId>
     <packaging>pom</packaging>
 
     <version>1.0-SNAPSHOT</version>
-    <name>mh.parent</name>
+    <name>jigsaw</name>
 
     <modules>
-        <module>mh.standalone</module>
-        <module>mh.library</module>
-        <module>mh.library.without</module>
+        <module>mh.libraryA</module>
+        <module>mh.standaloneA</module>
+
+        <module>mh.libraryB</module>
+        <module>mh.standaloneB</module>
     </modules>
 
     <!--https://repository.apache.org/content/repositories/snapshots/org/apache/maven/plugins/maven-jlink-plugin/3.0.0-alpha-2-SNAPSHOT/-->
     <!--https://repository.apache.org/content/groups/snapshots/org/apache/maven/plugins/maven-jlink-plugin/3.0.0-alpha-2-SNAPSHOT/-->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>apache.snapshots</id>
-            <name>Apache Snapshot Repository</name>
-            <url>https://repository.apache.org/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>apache.snapshots</id>-->
+            <!--<name>Apache Snapshot Repository</name>-->
+            <!--<url>https://repository.apache.org/snapshots</url>-->
+            <!--<releases>-->
+                <!--<enabled>false</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jlink-plugin</artifactId>
-                <version>3.0.0-alpha-2-SNAPSHOT</version>
-                <!--<version>3.0.0-SNAPSHOT</version>-->
-                <configuration>
-                    <addModules>
-                        <addModule>moduleMh</addModule>
-                    </addModules>
-                    <!--<outputDirectoryImage>/Users/marekhudyma/private/jigsaw/jlink_image</outputDirectoryImage>-->
-                    <outputDirectory>/Users/marekhudyma/private/jigsaw/jlink_dir</outputDirectory>
-                    <stripDebug>true</stripDebug>
-                    <compress>2</compress>
-                    <noHeaderFiles>true</noHeaderFiles>
-                    <noManPages>true</noManPages>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-jlink-plugin</artifactId>-->
+                <!--<version>3.0.0-alpha-2-SNAPSHOT</version>-->
+                <!--&lt;!&ndash;<version>3.0.0-SNAPSHOT</version>&ndash;&gt;-->
+                <!--<configuration>-->
+                    <!--<addModules>-->
+                        <!--<addModule>moduleMh</addModule>-->
+                    <!--</addModules>-->
+                    <!--&lt;!&ndash;<outputDirectoryImage>/Users/marekhudyma/private/jigsaw/jlink_image</outputDirectoryImage>&ndash;&gt;-->
+                    <!--<outputDirectory>/Users/marekhudyma/private/jigsaw/jlink_dir</outputDirectory>-->
+                    <!--<stripDebug>true</stripDebug>-->
+                    <!--<compress>2</compress>-->
+                    <!--<noHeaderFiles>true</noHeaderFiles>-->
+                    <!--<noManPages>true</noManPages>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 
 </project>
