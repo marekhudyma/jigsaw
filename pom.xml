@@ -16,6 +16,8 @@
 
         <module>mh.libraryB</module>
         <module>mh.standaloneB</module>
+
+        <module>mh.standaloneC</module>
     </modules>
 
     <!--https://repository.apache.org/content/repositories/snapshots/org/apache/maven/plugins/maven-jlink-plugin/3.0.0-alpha-2-SNAPSHOT/-->
