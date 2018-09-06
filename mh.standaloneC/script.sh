@@ -77,37 +77,52 @@ rm -rf module-info.class
 #cd ../..
 
 cd ..
-#---------------- poi
-cp jars_original/poi-3.17.jar jars/
-cd jars
+#---------------- poi + poi-scratchpad
+rm -rf jars_poi
+mkdir jars_poi
+cp jars_original/poi-3.17.jar jars_poi/
+cp jars_original/poi-scratchpad-3.17.jar jars_poi/
+cd jars_poi/
 
-jdeps --module-path . --add-modules commons.codec,commons.collections4,commons.logging --generate-module-info generated-mods poi-3.17.jar
-mv generated-mods/poi/module-info.java module-info.java
-javac --module-path . --add-modules commons.codec,commons.collections4,commons.logging --patch-module poi=poi-3.17.jar module-info.java
-jar uf poi-3.17.jar module-info.class
+jar xf poi-3.17.jar
+jar xf poi-scratchpad-3.17.jar
+
+rm -rf poi-3.17.jar
+rm -rf poi-scratchpad-3.17.jar
+
+jar -cvf poi-full.jar .
+
+cd ..
+cp jars_poi/poi-full.jar jars/
+rm -rf jars_poi/
+cd jars/
+
+jdeps --module-path . --add-modules commons.codec,commons.collections4,commons.logging --generate-module-info generated-mods poi-full.jar
+mv generated-mods/poi.full/module-info.java module-info.java
+javac --module-path . --add-modules commons.codec,commons.collections4,commons.logging --patch-module poi.full=poi-full.jar module-info.java
+jar uf poi-full.jar module-info.class
 
 rm -rf generated-mods/
 rm -rf module-info.java
 rm -rf module-info.class
 
-#mkdir poi
-#cp poi-3.17.jar poi/
-#cd poi/
-#jar xf poi-3.17.jar
-#cd ../..
-
 cd ..
+pwd
 
-#---------------- poi-scratchpad
-cp jars_original/poi-scratchpad-3.17.jar jars/
-cd jars
+#----------------------------- JLINK
+mvn clean install
+cp target/mh.standaloneC-1.0-SNAPSHOT.jar jars
 
-#problem
-jdeps --module-path . --add-modules commons.codec,commons.collections4,commons.logging --generate-module-info generated-mods poi-scratchpad-3.17.jar
+$JAVA_HOME/bin/jlink \
+--module-path $JAVA_HOME/jmods/:jars \
+--add-modules moduleMhC \
+--launcher launcherMh=moduleMhC/mh.standaloneC.App \
+--output standalone \
+--strip-debug \
+--compress 2 \
+--no-header-files \
+--no-man-pages
 
-#jdeps --module-path . --add-modules commons.codec,commons.collections4,commons.logging,poi --generate-module-info generated-mods poi-scratchpad-3.17.jar
-#javac --module-path . --add-modules commons.codec,commons.collections4,commons.logging,poi --patch-module poi.scratchpad=poi-scratchpad-3.17.jar module-info.java
-#jar uf poi-scratchpad-3.17.jar module-info.class
+du -sh standalone
 
-
-
+standalone/bin/launcherMh

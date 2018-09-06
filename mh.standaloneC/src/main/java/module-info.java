@@ -1,5 +1,5 @@
-module moduleMhA {
+module moduleMhC {
 
-    //requires moduleLibraryMhA;
+    requires poi.full;
 
 }
