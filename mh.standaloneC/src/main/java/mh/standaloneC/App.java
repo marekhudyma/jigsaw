@@ -15,7 +15,7 @@ public class App {
         int counter = 0;
         while (true) {
             sleep1second();
-            System.out.println("Hello World " + ++counter);
+            System.out.println("Hello World C " + ++counter);
 
         }
     }

@@ -6,7 +6,7 @@ public class HelloWorldPrinter {
 
     public void printForever() {
         while(true) {
-            System.out.println("Hello World " + ++counter);
+            System.out.println("Hello World B " + ++counter);
             sleep1second();
         }
     }
